@@ -9,7 +9,6 @@
     <input type="text" id="input">
 
     <div>
-
         <span id="a1">word</span>
         <span id="a2">hi</span>
         <span id="a3">shalom</span>
@@ -20,9 +19,11 @@
         'hi',
         'shalom'
         ]
-        const fst = document.getElementById('a1');
-        const scd = document.getElementById('a2');
-        const trd = document.getElementById('a3');
+        const b1 = document.getElementById('a1');
+        const b2 = document.getElementById('a2');
+        const b3 = document.getElementById('a3');
+        const inp = document.getElementById('input');
+
         fst.innerHTML = arr[0]
         scd.innerHTML = arr[1]
         trd.innerHTML = arr[2]
@@ -31,6 +32,22 @@
             scd,
             trd
         ]
+        document.addEventListener('keyup', event => {
+    if (event.code === 'Space') {
+        document.querySelector('span').style.backgroundColor = 'red';}})
+
+        // if (inp.value.slice(0, -1) === arr[count]) {
+        //             `b${count}`.style.color = 'green';
+        //             inp.value = '';
+        //             count++;
+        //         } else {
+        //             `b${count}`.style.backgroundColor = 'red';
+        //             inp.value = '';
+        //             count++;
+        //         }
+
+
+
     </script>
     </body>
 </html>
