@@ -5,6 +5,32 @@
     <title>Type monkey</title>
 </head>
 <body>
-    
-</body>
+    <h1>Type monkey</h1>
+    <input type="text" id="input">
+
+    <div>
+
+        <span id="a1">word</span>
+        <span id="a2">hi</span>
+        <span id="a3">shalom</span>
+    </div>
+    <script>
+        arr = [
+        'word',
+        'hi',
+        'shalom'
+        ]
+        const fst = document.getElementById('a1');
+        const scd = document.getElementById('a2');
+        const trd = document.getElementById('a3');
+        fst.innerHTML = arr[0]
+        scd.innerHTML = arr[1]
+        trd.innerHTML = arr[2]
+        const spans = [
+            fst,
+            scd,
+            trd
+        ]
+    </script>
+    </body>
 </html>
