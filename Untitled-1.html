@@ -6,10 +6,12 @@
 </head>
 <body>
     <input type='text'>
+    <div></div>
+    <span id="b">hello</span>
     <script>
     document.addEventListener('keyup', event => {
     if (event.code === 'Space') {
-        alert('Space pressed')}})
+        document.querySelector('span').style.backgroundColor = 'red';}})
     </script>
 </body>  
 </html>
