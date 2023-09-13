@@ -8,22 +8,12 @@
     <h1>Type monkey</h1>
     <input type="text" id="input">
 
-    <div>
-        <span id="a1"></span>
-        <span id="a2"></span>
-        <span id="a3"></span>
-        <span id="a4"></span>
-        <span id="a5"></span>
-        <span id="a6"></span>
-        <span id="a7"></span>
-        <span id="a8"></span>
-        <span id="a9"></span>
-        <span id="a10"></span>
-
-        
-
+    <div id="container">
     </div>
     <script>
+        const WORDS = 5;
+        const container = document.getElementById('container');
+
         let array = [
         'whisper',
         'employ',
@@ -37,64 +27,40 @@
         'hardship'
         ]
         let shuffledArray = array.sort((a, b) => 0.5 - Math.random());
-        const b1 = document.getElementById('a1');
-        const b2 = document.getElementById('a2');
-        const b3 = document.getElementById('a3');
-        const b4 = document.getElementById('a4');
-        const b5 = document.getElementById('a5');
-        const b6 = document.getElementById('a6');
-        const b7 = document.getElementById('a7');
-        const b8 = document.getElementById('a8');
-        const b9 = document.getElementById('a9');
-        const b10 = document.getElementById('a10');
         const inp = document.getElementById('input');
         let count = 0;
 
-        b1.innerHTML = array[0]
-        b2.innerHTML = array[1]
-        b3.innerHTML = array[2]
-        b4.innerHTML = array[3]
-        b5.innerHTML = array[4]
-        b6.innerHTML = array[5]
-        b7.innerHTML = array[6]
-        b8.innerHTML = array[7]
-        b9.innerHTML = array[8]
-        b10.innerHTML = array[9]
+
+        window.addEventListener('load', () => {
+            for (let i = 0; i < WORDS; i++) {
+                let ell = document.createElement('span');
+                ell.id = `a${i}`;
+                ell.style.margin = '2px';
+                container.appendChild(ell);
+                ell.innerHTML = array[i];
+            }
+            })
+
+        
 
 
         function myFunction(item) {
-            if (inp.value.slice(0, -1) === array[count]) {
+            if (inp.value.slice(0, -1) === shuffledArray[count]) {
                 item.style.color = 'green';
                 inp.value = '';
                 count++;
             } else {
                 item.style.backgroundColor = 'red';
                 inp.value = '';
-                count++; 
-        }};
+                count++; }}
+        
+
+    const spans = document.querySelectorAll('span');
 
         inp.addEventListener('keyup', event => {
             if (event.code === 'Space') {
-                if (count === 0) {
-                    myFunction(b1);
-            } else if (count === 1) {
-                myFunction(b2); }
-                else if (count === 2) {
-                    myFunction(b3);  }    
-                    else if (count === 3) {
-                    myFunction(b4);  }  
-                    else if (count === 4) {
-                    myFunction(b5);  }  
-                    else if (count === 5) {
-                    myFunction(b6);  }  
-                    else if (count === 6) {
-                    myFunction(b7);  }  
-                    else if (count === 7) {
-                    myFunction(b8);  }  
-                    else if (count === 8) {
-                    myFunction(b9);  }  
-                    else if (count === 9) {
-                    myFunction(b10);  }               
+                myFunction(spans[count]);
+            
                 }});
     </script>
     </body>
