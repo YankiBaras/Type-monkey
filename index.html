@@ -11,7 +11,7 @@
     <div id="container">
     </div>
     <script>
-        const WORDS = 5;
+        const WORDS = 10;
         const container = document.getElementById('container');
 
         let array = [
@@ -29,7 +29,7 @@
         let shuffledArray = array.sort((a, b) => 0.5 - Math.random());
         const inp = document.getElementById('input');
         let count = 0;
-
+        let spans
 
         window.addEventListener('load', () => {
             for (let i = 0; i < WORDS; i++) {
@@ -38,12 +38,9 @@
                 ell.style.margin = '2px';
                 container.appendChild(ell);
                 ell.innerHTML = array[i];
-            }
-            })
-
+                spans = document.querySelectorAll('span');
+            }})
         
-
-
         function myFunction(item) {
             if (inp.value.slice(0, -1) === shuffledArray[count]) {
                 item.style.color = 'green';
@@ -55,13 +52,10 @@
                 count++; }}
         
 
-    const spans = document.querySelectorAll('span');
-
         inp.addEventListener('keyup', event => {
-            if (event.code === 'Space') {
+            if (event.code === 'Space') {                
                 myFunction(spans[count]);
-            
-                }});
+                            }});
     </script>
     </body>
 </html>
