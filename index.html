@@ -7,6 +7,7 @@
 <body>
     <h1>Type monkey</h1>
     <input type="text" id="input">
+    <button id="hit">refresh</button>
 
     <div id="container">
     </div>
@@ -56,6 +57,18 @@
             if (event.code === 'Space') {                
                 myFunction(spans[count]);
                             }});
+
+        inp.addEventListener('keyup', event => {
+            let cur = inp.value
+            if (cur != shuffledArray[count].slice(0, cur.length)) {
+                spans[count].style.color = 'red';
+             } else {
+                spans[count].style.color = 'black';
+             }
+        })
+
+        
+        document.querySelector('button').addEventListener('click', () => {window.location.reload();})
     </script>
     </body>
 </html>
