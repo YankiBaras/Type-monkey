@@ -7,7 +7,7 @@
 <body>
     <h1>Type monkey</h1>
     <input type="text" id="input">
-    <button id="hit">refresh</button>
+    <button onclick="reset()">&#8634;</button>
 
     <div id="container">
     </div>
@@ -30,7 +30,8 @@
         let shuffledArray = array.sort((a, b) => 0.5 - Math.random());
         const inp = document.getElementById('input');
         let count = 0;
-        let spans
+        let spans;
+
 
         window.addEventListener('load', () => {
             for (let i = 0; i < WORDS; i++) {
@@ -38,9 +39,20 @@
                 ell.id = `a${i}`;
                 ell.style.margin = '2px';
                 container.appendChild(ell);
-                ell.innerHTML = array[i];
+                ell.innerHTML = shuffledArray[i];
                 spans = document.querySelectorAll('span');
             }})
+
+        function reset() {
+            let newArr = shuffledArray.sort((a, b) => 0.5 - Math.random());
+            shuffledArray = newArr;
+            count = 0;
+            for (let i = 0; i < WORDS; i++) {
+                let cur = spans[i];
+                cur.innerHTML = shuffledArray[i];
+                cur.style.color = 'black';
+                }
+        }
         
         function myFunction(item) {
             if (inp.value.slice(0, -1) === shuffledArray[count]) {
@@ -48,7 +60,8 @@
                 inp.value = '';
                 count++;
             } else {
-                item.style.backgroundColor = 'red';
+                item.style.color = 'red';
+                item.style.backgroundColor = 'white';
                 inp.value = '';
                 count++; }}
         
@@ -59,16 +72,15 @@
                             }});
 
         inp.addEventListener('keyup', event => {
-            let cur = inp.value
-            if (cur != shuffledArray[count].slice(0, cur.length)) {
-                spans[count].style.color = 'red';
+            if (event.code != 'Space') {
+            let curr = inp.value;
+            if (curr != shuffledArray[count].slice(0, curr.length)) {
+                spans[count].style.backgroundColor = 'red';
              } else {
-                spans[count].style.color = 'black';
-             }
+                spans[count].style.backgroundColor = 'white';
+             }}
         })
-
         
-        document.querySelector('button').addEventListener('click', () => {window.location.reload();})
     </script>
     </body>
 </html>
